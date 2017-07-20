@@ -1,17 +1,17 @@
-# Coding Files
+# coding-wordpress
 
+* WordPress向けコーディングファイル郡です。
 * package.jsonおよびgulp(gulpfile.js)を使い、Webコーディングに便利なデータを入れています。
-* サンプル画像やCSSも入っています。
 
 ## 作業の流れ
 
 1. Coding Filesを自分のパソコンにclone（ダウンロード）します。
 
-``git clone https://github.com/blockworks/codingFiles.git``
+``git clone git@github.com:blockworks/coding-wordpress.git``
 
 2. ダウンロードしたディレクトリへ移動します。
 
-``cd codingFiles``
+``cd coding-wordpress``
 
 3. gulpの関連ファイルをインストールします。（package.jsonの内容を元に自動でインストールされます）
 
@@ -31,6 +31,8 @@
 
 ## cssディレクトリ、ファイルについて
 
+css/*.scssのファイル群の内容をコンパイルし、Wordpress基準となるstyle.cssへ全cssコードを統合するようになっています。
+
 scssとcssを別ディレクトリにする必要性を感じないため、cssにまとめています。
 
 ``style.scss``から``_reset.scss``、``_sp.scss``、``_pc.scss``の順番で読み込み、最終的にstyle.cssにひとまとめにされます。
@@ -45,4 +47,4 @@ scssとcssを別ディレクトリにする必要性を感じないため、css�
 
 ## その他
 
-* htmlには、使う可能性のあるコードをすべて記述しています。不要なコードを削除してお使いください。
+* htmlには、使う可能性のあるコードをすべて記述しています。不要なコードは削除してお使いください。
