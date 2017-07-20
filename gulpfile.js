@@ -1,51 +1,51 @@
-var gulp         = require('gulp');               //gulp
-var sass         = require('gulp-sass');          //scss -> css
-var plumber      = require('gulp-plumber');       //watch dont stop
-var browserSync  = require('browser-sync');       //browser live reload
-var autoprefixer = require('gulp-autoprefixer');  //autoprefixer
-
-//copy to html/js/font/img
-gulp.task('copy', function(){
-	//
-});
+var gulp = require('gulp');
+var browserSync = require('browser-sync');
+var sass         = require('gulp-sass');	//scss -> css
+var plumber      = require('gulp-plumber');	//watch dont stop
+var autoprefixer = require('gulp-autoprefixer');	//autoprefixer
 
 //scss -> css
 gulp.task('sass', function(){
-	gulp.src(['style.scss', 'css/*.scss'])
+	gulp.src('./css/**/*.scss')
 		.pipe(plumber())
 		.pipe(sass({outputStyle: 'compressed'}))	//expanded,compressed,nested
 		.pipe(autoprefixer({
-	        browsers: ['last 2 versions'],
+	        browsers: ['last 3 versions'],
 	        cascade: false
 	    }))
 		.pipe(gulp.dest('./'));
+		
+		gulp.src('./js/**/*.scss')
+		.pipe(plumber())
+		.pipe(sass({outputStyle: 'compressed'}))	//expanded,compressed,nested
+		.pipe(autoprefixer({
+	        browsers: ['last 3 versions'],
+	        cascade: false
+	    }))
+		.pipe(gulp.dest('./js/'));
 });
 
-//watching files
-gulp.task('watch', function(){
-	gulp.watch('style.scss', ['sass']);
-	gulp.watch('css/*.scss', ['sass']);
-	//reload
-	gulp.watch('./*.html', ['bs-reload']);
-	gulp.watch('style.scss', ['bs-reload']);
-	gulp.watch('./js/*.js', ['bs-reload']);
-});
-
-//browserSync reload
-gulp.task('bs-reload', function(){
-	browserSync.reload();
-});
-
-//webserver display(browserSync)
-gulp.task('webserver', function(){
+//browserSync
+gulp.task('browser-sync', function() {
 	browserSync({
 		notify: false,
-		port: 8000,
 		server: {
-			baseDir: './',       //対象ディレクトリ
-			index  : 'index.html'      //インデックスファイル
+			baseDir: "./"	//対象ディレクトリ
+			,index  : "index.html"	//インデックスファイル
 		}
 	});
 });
 
-gulp.task('default', ['copy', 'sass', 'watch', 'webserver']);
+//browser reload
+gulp.task('bs-reload', function () {
+	browserSync.reload();
+});
+
+//watching files
+gulp.task('default', ['sass', 'browser-sync'], function () {
+	gulp.watch("./css/**/*.scss", ['sass']);
+	gulp.watch("./*.html", ['bs-reload']);
+	gulp.watch("./css/**/*.css", ['bs-reload']);
+	gulp.watch("./js/**/*.js", ['bs-reload']);
+	gulp.watch("./js/**/*.css", ['bs-reload']);
+});

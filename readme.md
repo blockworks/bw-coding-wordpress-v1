@@ -1,6 +1,5 @@
-# Coding WordPress
+# Coding Files
 
-* 個人的にWordPressのテーマ制作をするための最初の雛形ファイルです。
 * package.jsonおよびgulp(gulpfile.js)を使い、Webコーディングに便利なデータを入れています。
 * サンプル画像やCSSも入っています。
 
@@ -8,7 +7,11 @@
 
 1. Coding Filesを自分のパソコンにclone（ダウンロード）します。
 
+``git clone https://github.com/blockworks/codingFiles.git``
+
 2. ダウンロードしたディレクトリへ移動します。
+
+``cd codingFiles``
 
 3. gulpの関連ファイルをインストールします。（package.jsonの内容を元に自動でインストールされます）
 
@@ -21,10 +24,24 @@
 
 ## ファイル構成の説明
 
-* gulpfile.js…gulpプラグインを使用するためのプログラムが記述されています
-* LICENSE…このファイル郡のライセンスです
-* package.json…関連gulpファイルをインストールするための設定ファイルです
-* readme.md…このファイルです
+* ``gulpfile.js``…gulpプラグインを使用するためのプログラムが記述されています
+* ``package.json``…gulp関連ファイルをインストールするための設定ファイルです
+* ``readme.md``…このファイルです
+
+
+## cssディレクトリ、ファイルについて
+
+scssとcssを別ディレクトリにする必要性を感じないため、cssにまとめています。
+
+``style.scss``から``_reset.scss``、``_sp.scss``、``_pc.scss``の順番で読み込み、最終的にstyle.cssにひとまとめにされます。
+
+
+## jsディレクトリ、ファイルについて
+
+* 個人的によく使うjQueryプラグインを同梱しています。
+
+* jquery.usercode.jsには、個人的によく使うコードを記載しています。不要なコードは削除してください。
+
 
 ## その他
 
